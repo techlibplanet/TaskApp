@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data class="ItemRowBinding">
+        <variable
+                name="ItemRowVm"
+                type="com.example.lenovo.taskapp.viewmodel.ItemDetails"/>
+        <variable name="ItemHandler" type="com.example.lenovo.taskapp.newsale.ItemHandler"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+            android:layout_marginTop="5dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <android.support.v7.widget.CardView
+                android:padding="@dimen/space10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:onClick="@{(view) -> ItemHandler.onClick(view)}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                <TextView
+                        android:id="@+id/item_name"
+                        android:textSize="15sp"
+                        android:padding="@dimen/space10dp"
+                        android:layout_weight="1"
+                        android:text="@{ItemRowVm.itemName}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/item_quantity"
+                        android:textSize="15sp"
+                        android:padding="@dimen/space10dp"
+                        android:layout_weight="1"
+                        android:text="@{ItemRowVm.quantity}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/item_rate"
+                        android:textSize="15sp"
+                        android:padding="@dimen/space10dp"
+                        android:layout_weight="1"
+                        android:text="@{ItemRowVm.rate}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                <TextView
+                        android:id="@+id/item_total"
+                        android:textSize="15sp"
+                        android:padding="@dimen/space10dp"
+                        android:layout_weight="1"
+                        android:text="@{ItemRowVm.totalAmount}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
