@@ -1,93 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data class="CustomerRowBinding">
+
         <variable
-                name="CustomerDetailsVm"
-                type="com.example.lenovo.taskapp.database.entities.CustomerDetails"/>
+            name="CustomerDetailsVm"
+            type="com.example.lenovo.taskapp.database.entities.CustomerDetails" />
+
+        <variable
+            name="SaleDetailHandler"
+            type="com.example.lenovo.taskapp.newsale.SaleDetailHandler" />
     </data>
-    <android.support.constraint.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/space10dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space10dp"
+            android:orientation="vertical">
 
             <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/space10dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/space10dp">
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    <LinearLayout
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TitleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/TitleText"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{CustomerDetailsVm.name}"/>
+                            android:layout_margin="@dimen/space10dp"
+                            android:layout_weight="1"
+                            android:text="@{CustomerDetailsVm.name}" />
 
                         <TextView
-                                android:gravity="end"
-                                android:layout_width="match_parent"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/SmallTitleText"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{CustomerDetailsVm.totalAmount}"/>
-
-                    </LinearLayout>
-                    <LinearLayout
+                            style="@style/SmallTitleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                        <TextView
-                                android:layout_width="match_parent"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/SmallTitleText"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{CustomerDetailsVm.date}"/>
-
-                        <TextView
-                                android:gravity="end"
-                                android:layout_width="match_parent"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/SmallTitleText"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{CustomerDetailsVm.balanceAmount}"/>
+                            android:layout_margin="@dimen/space10dp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@{CustomerDetailsVm.totalAmount}" />
 
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/SmallTitleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="end">
-                        <Button
-                                android:layout_width="wrap_content"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/ThemeButton"
-                                android:layout_height="wrap_content"
-                                android:text="Pay"/>
+                            android:layout_margin="@dimen/space10dp"
+                            android:layout_weight="1"
+                            android:text="@{CustomerDetailsVm.date}" />
+
+                        <TextView
+                            style="@style/SmallTitleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/space10dp"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@{CustomerDetailsVm.balanceAmount}" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="horizontal">
 
                         <Button
-                                android:layout_width="wrap_content"
-                                android:layout_margin="@dimen/space10dp"
-                                style="@style/ThemeButton"
-                                android:layout_height="wrap_content"
-                                android:text="Delete"/>
+                            style="@style/ThemeButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/space10dp"
+                            android:onClick="@{(view) -> SaleDetailHandler.onPayClick(view)}"
+                            android:text="Pay" />
+
+                        <Button
+                            android:onClick="@{(view) -> SaleDetailHandler.onDeleteClick(view)}"
+                            style="@style/ThemeButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/space10dp"
+                            android:text="Delete" />
 
                     </LinearLayout>
                 </LinearLayout>

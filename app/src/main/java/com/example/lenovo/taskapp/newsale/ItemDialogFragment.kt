@@ -75,7 +75,7 @@ class ItemDialogFragment() : DialogFragment() {
 
     private fun setItems() {
         val itemList = mutableListOf<ItemDetails>()
-        val itemData1 = ItemDetails("Samsung Tab A", "25000", "1", "250000")
+        val itemData1 = ItemDetails("Samsung Tab A", "25000", "1", "25000")
         val itemData2 = ItemDetails("Nokia 6.1 Plus", "30000", "1", "30000")
         val itemData3 = ItemDetails("Poco F1", "28999", "1", "28999")
         itemList.add(itemData1)

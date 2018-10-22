@@ -5,9 +5,9 @@ import android.databinding.ObservableField
 
 class NewSaleVm : BaseObservable() {
     var name : String?= null
-    val date : String?= null
+    val date =ObservableField<String>()
     var paidAmount : String? = null
-    var isFullyPaid : Boolean = false
+    var isFullyPaid = ObservableField<Boolean>()
     var itemName = ObservableField<String>()
     var rate = ObservableField<String>()
     var quantity = ObservableField<String>()

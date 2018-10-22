@@ -24,6 +24,6 @@ class ItemDetailAdapter : RecyclerView.Adapter<ItemViewHolder>() {
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val itemDetails = items[position]
-        holder.bindView(context,itemDetails)
+        holder.bindView(context,itemDetails, position)
     }
 }

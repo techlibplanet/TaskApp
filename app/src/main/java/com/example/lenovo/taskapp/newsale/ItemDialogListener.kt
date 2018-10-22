@@ -10,3 +10,13 @@ interface ItemDialogListener {
 interface ItemHandler{
     fun onClick(view:View)
 }
+
+interface SaleDetailHandler{
+    fun onPayClick(view: View)
+    fun onDeleteClick(view: View)
+}
+
+interface PayDialogListener{
+    fun onPaidSuccessfully(paid : Boolean)
+    fun onDeleteSuccessfully()
+}

@@ -16,12 +16,15 @@ import com.example.lenovo.taskapp.TaskApp
 import com.example.lenovo.taskapp.adapter.CustomerDetailAdapter
 import com.example.lenovo.taskapp.database.TaskDatabase
 import com.example.lenovo.taskapp.database.entities.CustomerDetails
+import com.example.lenovo.taskapp.newsale.PayDialogListener
+import com.example.lenovo.taskapp.viewmodel.CustomerDetailsVm
 import com.example.mayank.kwizzapp.dependency.components.DaggerInjectFragmentComponent
 import org.jetbrains.anko.find
 import javax.inject.Inject
 
 
-class PartiallyFragment : Fragment() {
+class PartiallyFragment : Fragment(), PayDialogListener {
+
 
     private var listener: OnFragmentInteractionListener? = null
     private lateinit var recyclerView: RecyclerView
@@ -54,7 +57,14 @@ class PartiallyFragment : Fragment() {
     }
 
     private fun setItems() {
-
+        val dataList = mutableListOf<CustomerDetails>()
+        val databaseList = database.customerDetailsDao().getAllCustomerDetails()
+        for (data in databaseList){
+            if (!data.isFullyPaid){
+                dataList.add(data)
+            }
+        }
+        setRecyclerViewAdapter(dataList)
     }
 
     private fun setRecyclerViewAdapter(list: List<CustomerDetails>) {
@@ -82,6 +92,16 @@ class PartiallyFragment : Fragment() {
 
     interface OnFragmentInteractionListener {
         fun onFragmentInteraction(uri: Uri)
+    }
+
+    override fun onPaidSuccessfully(paid: Boolean) {
+        if (paid){
+            setItems()
+        }
+    }
+
+    override fun onDeleteSuccessfully() {
+        setItems()
     }
 
     companion object {

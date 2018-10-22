@@ -10,7 +10,7 @@ import com.example.lenovo.taskapp.viewmodel.ItemDetails
 
 class ItemViewHolder(val dataBinding: ItemRowBinding) : RecyclerView.ViewHolder(dataBinding.root) {
 
-    fun bindView(context : Context,itemDetails: ItemDetails) {
+    fun bindView(context : Context,itemDetails: ItemDetails, position : Int) {
         dataBinding.itemRowVm = itemDetails
 
         dataBinding.itemHandler = object : ItemHandler{

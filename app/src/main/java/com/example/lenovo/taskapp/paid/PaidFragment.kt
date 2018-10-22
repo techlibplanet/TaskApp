@@ -16,6 +16,7 @@ import com.example.lenovo.taskapp.TaskApp
 import com.example.lenovo.taskapp.adapter.CustomerDetailAdapter
 import com.example.lenovo.taskapp.database.TaskDatabase
 import com.example.lenovo.taskapp.database.entities.CustomerDetails
+import com.example.lenovo.taskapp.viewmodel.CustomerDetailsVm
 import com.example.mayank.kwizzapp.dependency.components.DaggerInjectFragmentComponent
 import org.jetbrains.anko.find
 import javax.inject.Inject
@@ -51,23 +52,14 @@ class PaidFragment : Fragment() {
     }
 
     private fun setItems() {
-        val list = mutableListOf<CustomerDetails>()
-
-        val customerDetails = CustomerDetails()
-        customerDetails.name = "Mayank Sharma"
-        customerDetails.balanceAmount = "20"
-        customerDetails.totalAmount = "100"
-        customerDetails.date = "12-10-18"
-        list.add(customerDetails)
-
-        val customerDetail2 = CustomerDetails()
-        customerDetail2.name = "Mayank Sharma"
-        customerDetail2.balanceAmount = "20"
-        customerDetail2.totalAmount = "100"
-        customerDetail2.date = "12-10-18"
-        list.add(customerDetail2)
-
-        setRecyclerViewAdapter(list)
+        val dataList = mutableListOf<CustomerDetails>()
+        val databaseList = database.customerDetailsDao().getAllCustomerDetails()
+        for (data in databaseList){
+            if (data.isFullyPaid){
+                dataList.add(data)
+            }
+        }
+        setRecyclerViewAdapter(dataList)
     }
 
     private fun setRecyclerViewAdapter(list: List<CustomerDetails>) {

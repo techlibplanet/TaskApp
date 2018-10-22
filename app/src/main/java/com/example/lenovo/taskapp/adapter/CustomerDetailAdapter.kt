@@ -24,6 +24,6 @@ class CustomerDetailAdapter: RecyclerView.Adapter<CustomerDetailViewHolder>() {
 
     override fun onBindViewHolder(holder: CustomerDetailViewHolder, position: Int) {
         val customerDetails = items[position]
-        holder.bindView(customerDetails)
+        holder.bindView(context,customerDetails, position)
     }
 }

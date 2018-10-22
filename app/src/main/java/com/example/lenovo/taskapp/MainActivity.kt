@@ -15,6 +15,7 @@ import com.example.lenovo.taskapp.adapter.CustomerDetailAdapter
 import com.example.lenovo.taskapp.database.TaskDatabase
 import com.example.lenovo.taskapp.database.entities.CustomerDetails
 import com.example.lenovo.taskapp.newsale.NewSaleActivity
+import com.example.lenovo.taskapp.newsale.PayDialogListener
 import com.example.lenovo.taskapp.paid.PaidFragment
 import com.example.lenovo.taskapp.partially.PartiallyFragment
 import org.jetbrains.anko.find
@@ -60,4 +61,6 @@ class MainActivity : AppCompatActivity(), PartiallyFragment.OnFragmentInteractio
     override fun onFragmentInteraction(uri: Uri) {
 
     }
+
+
 }

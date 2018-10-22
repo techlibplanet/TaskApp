@@ -15,6 +15,7 @@ class DatabaseModule {
     fun mfExpertLmsDatabase(@ApplicationContextQualifier context: Context): TaskDatabase {
         return Room.databaseBuilder(context, TaskDatabase::class.java, "task_database")
                 .fallbackToDestructiveMigration()
+                .allowMainThreadQueries()
                 .build()
     }
 }

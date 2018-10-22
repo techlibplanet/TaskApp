@@ -3,9 +3,10 @@ package com.example.lenovo.taskapp.database.entities
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "customer_details")
-class CustomerDetails {
+class CustomerDetails : Serializable {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -22,5 +23,16 @@ class CustomerDetails {
 
     @ColumnInfo(name = "balanceAmount")
     var balanceAmount: String? = null
+
+
+    @ColumnInfo(name = "isFullyPaid")
+    var isFullyPaid: Boolean = false
+
+
+
+
+
+
+
 
 }
